@@ -1,5 +1,6 @@
 using FrasesRandomAPI.Data;
 using FrasesRandomAPI.Models;
+using FrasesRandomAPI.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,8 +16,14 @@ var app = builder.Build();
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<QuotesDbContext>();
-    db.Database.EnsureCreated();
-    db.Database.Migrate();
+    if (db.Database.IsRelational())
+    {
+        db.Database.Migrate();
+    }
+    else
+    {
+        db.Database.EnsureCreated();
+    }
 }
 
 app.UseSwagger();
@@ -43,7 +50,7 @@ app.MapGet("/api/quotes/{id:int}", async (int id, QuotesDbContext db) =>
 
 app.MapPost("/api/quotes", async (QuoteRequest request, QuotesDbContext db) =>
     {
-        if (!TryValidateQuote(request, out var errors))
+        if (!QuoteRequestValidator.TryValidate(request, out var errors))
         {
             return Results.ValidationProblem(errors);
         }
@@ -67,7 +74,7 @@ app.MapPost("/api/quotes", async (QuoteRequest request, QuotesDbContext db) =>
 
 app.MapPut("/api/quotes/{id:int}", async (int id, QuoteRequest request, QuotesDbContext db) =>
     {
-        if (!TryValidateQuote(request, out var errors))
+        if (!QuoteRequestValidator.TryValidate(request, out var errors))
         {
             return Results.ValidationProblem(errors);
         }
@@ -111,36 +118,4 @@ app.MapDelete("/api/quotes/{id:int}", async (int id, QuotesDbContext db) =>
 
 app.Run();
 
-static bool TryValidateQuote(QuoteRequest request, out Dictionary<string, string[]> errors)
-{
-    errors = [];
-
-    if (string.IsNullOrWhiteSpace(request.Autor))
-    {
-        errors["Autor"] = ["El autor es obligatorio."];
-    }
-
-    if (string.IsNullOrWhiteSpace(request.Texto))
-    {
-        errors["Texto"] = ["El texto es obligatorio."];
-    }
-
-    if (request.Texto?.Length > 1000)
-    {
-        errors["Texto"] = ["El texto no puede superar los 1000 caracteres."];
-    }
-
-    if (request.Autor?.Length > 120)
-    {
-        errors["Autor"] = ["El autor no puede superar los 120 caracteres."];
-    }
-
-    if (request.Fecha == default)
-    {
-        errors["Fecha"] = ["La fecha debe ser válida."];
-    }
-
-    return errors.Count == 0;
-}
-
-record QuoteRequest(string Autor, string Texto, DateTime Fecha);
+public partial class Program { }

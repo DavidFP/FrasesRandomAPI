@@ -1,3 +1,5 @@
 <Solution>
   <Project Path="FrasesRandomAPI/FrasesRandomAPI.csproj" />
+  <Project Path="tests/FrasesRandomAPI.UnitTests/FrasesRandomAPI.UnitTests.csproj" />
+  <Project Path="tests/FrasesRandomAPI.IntegrationTests/FrasesRandomAPI.IntegrationTests.csproj" />
 </Solution>

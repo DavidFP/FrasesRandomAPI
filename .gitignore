@@ -1,6 +1,6 @@
 # Build results
-/FrasesRandomAPI/bin/
-/FrasesRandomAPI/obj/
+*bin/
+*obj/
 
 # User-specific files
 *.user
