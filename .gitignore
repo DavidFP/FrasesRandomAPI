@@ -1,0 +1,19 @@
+# Build results
+/FrasesRandomAPI/bin/
+/FrasesRandomAPI/obj/
+
+# User-specific files
+*.user
+*.userosscache
+*.suo
+*.sln.docstates
+
+# IDEs
+.vscode/
+.idea/
+
+# macOS
+.DS_Store
+
+# SQLite database
+/FrasesRandomAPI/quotes.db
