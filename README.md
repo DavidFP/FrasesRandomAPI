@@ -47,3 +47,20 @@ Las validaciones básicas aseguran que los campos obligatorios tengan contenido 
 ### Documentación interactiva
 
 Swagger UI recoge resúmenes y descripciones para cada operación. Puedes probar los endpoints desde `/swagger` o descargar el documento OpenAPI en `/swagger/v1/swagger.json`.
+
+### Tests y benchmarks
+
+El repositorio incluye pruebas de unidad (`tests/FrasesRandomAPI.UnitTests`) e integración (`tests/FrasesRandomAPI.IntegrationTests`) escritas con xUnit y ejecutadas mediante `dotnet test`. Puedes lanzar cada paquete o toda la solución:
+
+```bash
+dotnet test tests/FrasesRandomAPI.UnitTests/FrasesRandomAPI.UnitTests.csproj
+dotnet test tests/FrasesRandomAPI.IntegrationTests/FrasesRandomAPI.IntegrationTests.csproj
+# o
+dotnet test FrasesRandomAPI.slnx
+```
+
+Los benchmarks (`tests/FrasesRandomAPI.Benchmarks`) usan BenchmarkDotNet para medir el rendimiento de los endpoints principales. Se ejecutan en modo Release:
+
+```bash
+dotnet run --project tests/FrasesRandomAPI.Benchmarks --configuration Release
+```
