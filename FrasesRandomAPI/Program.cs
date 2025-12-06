@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using FrasesRandomAPI.Data;
 using FrasesRandomAPI.Models;
 using FrasesRandomAPI.Services;
@@ -118,4 +119,5 @@ app.MapDelete("/api/quotes/{id:int}", async (int id, QuotesDbContext db) =>
 
 app.Run();
 
+[ExcludeFromCodeCoverage]
 public partial class Program { }

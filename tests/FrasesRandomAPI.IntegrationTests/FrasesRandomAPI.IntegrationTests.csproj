@@ -24,4 +24,8 @@
     <ProjectReference Include="../../FrasesRandomAPI/FrasesRandomAPI.csproj" />
   </ItemGroup>
 
+   <PropertyGroup>
+    <RunSettingsFilePath>$(MSBuildThisFileDirectory)runsettings.xml</RunSettingsFilePath>
+  </PropertyGroup>
+
 </Project>

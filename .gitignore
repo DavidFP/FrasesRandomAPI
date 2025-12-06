@@ -19,3 +19,5 @@
 /FrasesRandomAPI/quotes.db
 
 *BenchmarkDotNet.Artifacts/
+*TestResults/
+*coverage-report/
