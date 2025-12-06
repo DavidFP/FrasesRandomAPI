@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Net;
 using System.Net.Http.Json;
 using System.IO;
+using FrasesRandomAPI;
 using FrasesRandomAPI.Data;
 using FrasesRandomAPI.Models;
 using Microsoft.AspNetCore.Hosting;
@@ -69,7 +70,7 @@ public class QuoteEndpointsTests : IClassFixture<CustomWebApplicationFactory>
     }
 }
 
-public sealed class CustomWebApplicationFactory : WebApplicationFactory<Program>
+public sealed class CustomWebApplicationFactory : WebApplicationFactory<AssemblyMarker>
 {
     private readonly string _databasePath = Path.Combine(
         Path.GetTempPath(), $"quotes-tests-{Guid.NewGuid():N}.db");

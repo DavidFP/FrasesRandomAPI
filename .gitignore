@@ -17,3 +17,5 @@
 
 # SQLite database
 /FrasesRandomAPI/quotes.db
+
+*BenchmarkDotNet.Artifacts/
