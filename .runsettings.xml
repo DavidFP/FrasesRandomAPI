@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RunSettings>
+  <DataCollectionRunSettings>
+    <DataCollectors>
+      <DataCollector friendlyName="XPlat Code Coverage">
+        <Configuration>
+          <Format>cobertura</Format>
+
+          <!-- Exclusiones -->
+          <Exclude>
+
+            <!-- Excluir proyectos de tests -->
+            <ModulePath>.*FrasesRandomAPI\.UnitTests.*</ModulePath>
+            <ModulePath>.*FrasesRandomAPI\.IntegrationTests.*</ModulePath>
+            <ModulePath>.*FrasesRandomAPI\.Benchmarks.*</ModulePath>
+
+            <!-- Excluir ficheros generados -->
+            <Source>.*SourceGenerators.*</Source>
+            <Source>.*AssemblyInfo\.cs</Source>
+            <Source>.*GlobalUsings\.cs</Source>
+
+            <!-- Excluir ensamblados Microsoft -->
+            <ModulePath>.*Microsoft\.AspNetCore.*</ModulePath>
+            <ModulePath>.*Microsoft\.EntityFrameworkCore.*</ModulePath>
+
+            <!-- Excluir carpetas de build -->
+            <Source>.*\\obj\\.*</Source>
+            <Source>.*\\bin\\.*</Source>
+
+          </Exclude>
+
+          <!-- Excluir por atributo -->
+          <ExcludeByAttribute>
+            <Attribute>ExcludeFromCodeCoverage</Attribute>
+          </ExcludeByAttribute>
+
+          <!-- No incluir miembros estáticos -->
+          <IncludeStaticMembers>false</IncludeStaticMembers>
+
+        </Configuration>
+      </DataCollector>
+    </DataCollectors>
+  </DataCollectionRunSettings>
+</RunSettings>
