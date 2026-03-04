@@ -1,0 +1,24 @@
+{
+  "$schema": "https://raw.githubusercontent.com/stryker-mutator/stryker-net/master/src/Stryker.CLI/stryker.schema.json",
+  "stryker-config": {
+    "project": "FrasesRandomAPI/FrasesRandomAPI.csproj",
+    "test-projects": [
+      "tests/FrasesRandomAPI.UnitTests/FrasesRandomAPI.UnitTests.csproj"
+    ],
+    "reporters": [
+      "progress",
+      "cleartext"
+    ],
+    "verbosity": "info",
+    "concurrency": 1,
+    "thresholds": {
+      "high": 80,
+      "low": 60,
+      "break": 50
+    },
+    "mutate": [
+      "FrasesRandomAPI/Services/**/*.cs",
+      "FrasesRandomAPI/Models/**/*.cs"
+    ]
+  }
+}
